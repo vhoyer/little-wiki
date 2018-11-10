@@ -30,7 +30,7 @@ export default {
   },
   data() {
     return {
-      articles: [],
+      articles: {},
       folders: [],
     }
   },
@@ -49,11 +49,12 @@ export default {
     ...mapActions('tree-view', {
       getNode: 'getNode',
     }),
-    async openFolder() {
-      const { articles, folders } = await this.getNode(this.path)
-
-      this.articles = articles
-      this.folders = folders
+    openFolder() {
+      this.getNode(this.path)
+      .then(({ articles, folders }) => {
+        this.articles = articles
+        this.folders = folders
+      })
     },
   },
 }

@@ -1,36 +1,29 @@
+import { firestore } from '~/plugins/firebase'
+
 export const state = () => ({
-  "=+": {
-    articles: [
-      "daTeaaGaskdArlsdsKgo",
-    ],
-    folders: [
-      "=+first-folder",
-    ],
-  },
-  "=+first-folder": {
-    articles: [
-      "rFKcfaW0TmxxWmr4dfcb",
-    ],
-    folders: [],
-  },
 })
 
 export const mutations = {
   pushNode(state, value) {
-    state = {
-      ...state,
-      ...value,
-    }
+    Object.assign(state, value)
   },
 }
 
 export const actions = {
-  async getNode({commit, state}, path) {
+  async getNode({commit, state, dispatch}, path) {
     if (state.hasOwnProperty(path)) {
       return state[path]
-    } else {
-      //getFromFirebase
-      return await null
     }
+    //getFromFirebase
+    const doc = await firestore.collection('tree-view').doc(path).get()
+    commit('pushNode', {
+      [doc.id]: {
+        folders: [],
+        articles: {},
+        ...doc.data(),
+      },
+    })
+
+    return state[path]
   }
 }

@@ -34,7 +34,7 @@ export default {
   },
   props: {
     articles: {
-      type: Array,
+      type: Object,
       required: true,
     },
     folders: {
