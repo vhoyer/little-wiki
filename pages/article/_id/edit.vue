@@ -1,17 +1,19 @@
 <template>
   <article>
     <small>{{ path }}</small>
-    <nuxt-link :to="`/article/${doc.id}/edit`">edit</nuxt-link>
 
-    <h2>{{ title }}</h2>
+    <h2 editable-content="true">{{ title }}</h2>
 
-    <section v-html="marked"/>
+    <textarea
+      v-model="body"
+    />
+
+    <button @click="save">save</button>
   </article>
 </template>
 
 <script>
 import { firestore } from '~/plugins/firebase'
-import marked from 'marked'
 
 export default {
   async asyncData({ params, error }) {
@@ -30,17 +32,16 @@ export default {
       body: snap.body,
     }
   },
-  computed: {
-    marked() {
-      const { lexer, parser } = marked
-
-      return parser(lexer(this.body))
+  methods: {
+    save() {
+      firestore.collection("articles").doc(this.doc.id).update({
+        title: this.title,
+        body: this.body,
+      })
+      this.$router.push({
+        path: `/article/${this.doc.id}`,
+      })
     }
-  },
-  created() {
-    marked.setOptions({
-      sanitize: true,
-    })
   },
 }
 </script>
