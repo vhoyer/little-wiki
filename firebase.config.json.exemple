@@ -1,0 +1,8 @@
+{
+  "apiKey": "<exemple>",
+  "authDomain": "<exemple>",
+  "databaseURL": "<exemple>",
+  "projectId": "<exemple>",
+  "storageBucket": "<exemple>",
+  "messagingSenderId": "<exemple>"
+}

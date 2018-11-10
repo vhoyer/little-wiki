@@ -34,7 +34,8 @@ module.exports = {
   * because nuxt wasn't loading it automatically
   */
   plugins: [
-    '~/plugins/vuex.js'
+    '~/plugins/vuex.js',
+    '~/plugins/firebase.js',
   ],
 
   /*
