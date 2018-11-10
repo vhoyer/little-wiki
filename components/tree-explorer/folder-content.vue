@@ -10,8 +10,9 @@
       />
     </li>
     <li
-      v-for="(article, index) in articles"
-      :key="index+folders.lenght"
+      v-for="(article, key) in articles"
+      :key="key"
+      @click="open(key)"
     >
       {{ article }}
     </li>
@@ -24,7 +25,6 @@
   margin-left: -18px;
 }
 </style>
-
 
 <script>
 export default {
@@ -40,6 +40,11 @@ export default {
     folders: {
       type: Array,
       required: true,
+    },
+  },
+  methods: {
+    open(key) {
+      console.log(key)
     },
   },
 }
