@@ -29,7 +29,7 @@
 <script>
 export default {
   components: {
-    //async import
+    //only import the component when it actually needs it
     Folder: () => import('~/components/tree-explorer/folder.vue'),
   },
   props: {
