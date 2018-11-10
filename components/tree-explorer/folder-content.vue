@@ -12,9 +12,12 @@
     <li
       v-for="(article, key) in articles"
       :key="key"
-      @click="open(key)"
     >
-      {{ article }}
+      <nuxt-link
+        :to="`/article/${key}`"
+      >
+        {{ article }}
+      </nuxt-link>
     </li>
   </ul>
 </template>
