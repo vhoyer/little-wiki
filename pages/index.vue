@@ -18,17 +18,20 @@
           target="_blank"
           class="button--grey">GitHub</a>
       </div>
+      <tree-explorer :path="'=+'" />
     </div>
   </section>
 </template>
 
 <script>
 import Logo from '~/components/Logo.vue'
+import TreeExplorer from '~/components/tree-explorer/folder.vue'
 
 export default {
   components: {
-    Logo
-  }
+    Logo,
+    TreeExplorer,
+  },
 }
 </script>
 
@@ -38,8 +41,6 @@ export default {
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
-  text-align: center;
 }
 
 .title {

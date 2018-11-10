@@ -31,8 +31,10 @@ module.exports = {
 
   /*
   ** Plugins to load before mounting the App
+  * because nuxt wasn't loading it automatically
   */
   plugins: [
+    '~/plugins/vuex.js'
   ],
 
   /*
