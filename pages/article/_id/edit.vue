@@ -31,10 +31,19 @@
 
       <textarea
         v-model="body"
+        class="text-edit"
       />
     </article>
   </div>
 </template>
+
+<style scoped>
+.text-edit {
+  width: 100%;
+  height: 12em;
+}
+</style>
+
 
 <script>
 import firebase from '~/plugins/firebase'
