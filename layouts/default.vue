@@ -33,13 +33,17 @@ html {
   margin: 0;
 }
 
-.button--green {
+.button {
   display: inline-block;
   border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
   text-decoration: none;
   padding: 10px 30px;
+  margin-left: 15px;
+}
+
+.button--green {
+  border: 1px solid #3b8070;
+  color: #3b8070;
 }
 
 .button--green:hover {
@@ -48,18 +52,23 @@ html {
 }
 
 .button--grey {
-  display: inline-block;
-  border-radius: 4px;
   border: 1px solid #35495e;
   color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
 }
 
 .button--grey:hover {
   color: #fff;
   background-color: #35495e;
+}
+
+.button--red {
+  border: 1px solid #ac2020;
+  color: #ac2020;
+}
+
+.button--red:hover {
+  color: #fff;
+  background-color: #ac2020;
 }
 
 .title {

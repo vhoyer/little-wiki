@@ -1,12 +1,27 @@
 <template>
-  <article>
-    <small>{{ path }}</small>
-    <nuxt-link :to="`/article/${doc.id}/edit`">edit</nuxt-link>
+  <div>
+    <nuxt-link
+      :to="'/'"
+      class="button button--grey"
+    >
+      back
+    </nuxt-link>
+    <nuxt-link
+      :to="`/article/${doc.id}/edit`"
+      class="button button--grey"
+    >
+      edit
+    </nuxt-link>
+    <hr>
 
-    <h2>{{ title }}</h2>
+    <article>
+      <small>{{ path }}</small>
 
-    <section v-html="marked"/>
-  </article>
+      <h2>{{ title }}</h2>
+
+      <section v-html="marked"/>
+    </article>
+  </div>
 </template>
 
 <script>

@@ -1,19 +1,45 @@
 <template>
-  <article>
-    <small>{{ path }}</small>
+  <div>
+    <nuxt-link
+      :to="`/article/${doc.id}`"
+      class="button button--grey"
+    >
+      back
+    </nuxt-link>
 
-    <h2 editable-content="true">{{ title }}</h2>
+    <a
+      role="button"
+      class="button button--green"
+      @click="save"
+    >
+      save
+    </a>
 
-    <textarea
-      v-model="body"
-    />
+    <a
+      role="button"
+      class="button button--red"
+      @click="deleteArticle"
+    >
+      delete
+    </a>
+    <hr>
 
-    <button @click="save">save</button>
-  </article>
+    <article>
+      <small>{{ path }}</small>
+
+      <h2 editable-content="true">{{ title }}</h2>
+
+      <textarea
+        v-model="body"
+      />
+    </article>
+  </div>
 </template>
 
 <script>
-import { firestore } from '~/plugins/firebase'
+import firebase from '~/plugins/firebase'
+
+const firestore = firebase.firestore()
 
 export default {
   async asyncData({ params, error }) {
@@ -37,9 +63,28 @@ export default {
       firestore.collection("articles").doc(this.doc.id).update({
         title: this.title,
         body: this.body,
+      }).then(() => {
+        this.$router.push({
+          path: `/article/${this.doc.id}`,
+        })
+      }).catch((err) => {
+        alert(err)
       })
-      this.$router.push({
-        path: `/article/${this.doc.id}`,
+    },
+    deleteArticle() {
+      let batch = firestore.batch()
+
+      batch.delete(firestore.collection("articles").doc(this.doc.id))
+      batch.update(firestore.collection("tree-view").doc(this.path), {
+        [`articles.${this.doc.id}`]: firebase.firestore.FieldValue.delete(),
+      })
+
+      batch.commit().then(() => {
+        this.$router.push({
+          path: '/',
+        })
+      }).catch((err) => {
+        alert(err)
       })
     }
   },
