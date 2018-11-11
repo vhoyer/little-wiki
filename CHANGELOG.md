@@ -2,6 +2,10 @@
 
 - Better design for tree-view explorer
 
+## Bugfix
+- prevent console error if user cancel prompt in folder creation
+
+
 # v1.1.0
 
 - Better navigate through out the pages with navigational buttons
