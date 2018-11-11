@@ -1,6 +1,8 @@
 # v1.2.0 [in progress]
 
 - Better design for tree-view explorer
+- Now the tree listen to changes made on the store and on firebase, that means that when
+  you create a folder or an article it will update automatically
 
 ## Bugfix
 - prevent console error if user cancel prompt in folder creation
