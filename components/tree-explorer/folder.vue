@@ -103,6 +103,10 @@ export default {
       let input = prompt(promptText)
       let folder = this.path
 
+      if (!input) {
+        return
+      }
+
       while (input.includes('=+')) {
         alert("Feeling smarty-pants, ye?\nYou cannot use '=+' because of reasons. Try again.")
 
