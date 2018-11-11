@@ -2,30 +2,33 @@ import { firestore } from '~/plugins/firebase'
 const treeView = firestore.collection('tree-view')
 
 export const state = () => ({
+  tree: {},
 })
 
 export const mutations = {
   pushNode(state, value) {
-    Object.assign(state, value)
+    state.tree = {
+      ...state.tree,
+      ...value
+    }
   },
 }
 
 export const actions = {
   async getNode({commit, state}, path) {
-    if (state.hasOwnProperty(path)) {
-      return state[path]
+    if (state.tree.hasOwnProperty(path)) {
+      return
     }
-    //getFromFirebase
-    const doc = await treeView.doc(path).get()
-    commit('pushNode', {
-      [doc.id]: {
-        folders: [],
-        articles: {},
-        ...doc.data(),
-      },
+    //getFromFirebase and set subscriber
+    treeView.doc(path).onSnapshot(doc => {
+      commit('pushNode', {
+        [doc.id]: {
+          folders: [],
+          articles: {},
+          ...doc.data(),
+        },
+      })
     })
-
-    return state[path]
   },
   //Sorry sometimes I can't help but to write shitty code, I find it funny
   async addFolderAndArticle({commit}, {path, name}) {

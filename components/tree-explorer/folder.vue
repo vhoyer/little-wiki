@@ -2,7 +2,7 @@
   <details>
     <summary
       class="folder"
-      @click="openFolder"
+      @click="openFolder(path)"
     >
       {{ folderName }}
       <button
@@ -63,13 +63,20 @@ export default {
       required: true,
     },
   },
-  data() {
-    return {
-      articles: {},
-      folders: [],
-    }
-  },
   computed: {
+    ...mapState('tree-view', {
+      tree: 'tree',
+    }),
+    articles() {
+      if (!this.tree[this.path]) return {}
+
+      return this.tree[this.path].articles
+    },
+    folders() {
+      if (!this.tree[this.path]) return []
+
+      return this.tree[this.path].folders
+    },
     folderName() {
       const folderName = this.path.split('=+').reverse()[0]
 
@@ -80,24 +87,11 @@ export default {
       }
     },
   },
-  watch: {
-    $store(state) {
-      this.articles = state[this.path].articles
-      this.folders = state[this.path].folders
-    },
-  },
   methods: {
     ...mapActions('tree-view', {
       addFolderAndArticle: 'addFolderAndArticle',
-      getNode: 'getNode',
+      openFolder: 'getNode',
     }),
-    openFolder() {
-      this.getNode(this.path)
-        .then(({ articles, folders }) => {
-          this.articles = articles
-          this.folders = folders
-        })
-    },
     addNode() {
       const promptText = "New file: (To create a folder append a '/' to the end)"
       let input = prompt(promptText)
