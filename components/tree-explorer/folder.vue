@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 import FolderContent from '~/components/tree-explorer/folder-content.vue'
 
 export default {
@@ -45,6 +45,12 @@ export default {
       }
     },
   },
+  watch: {
+    $store(state) {
+      this.articles = state[this.path].articles
+      this.folders = state[this.path].folders
+    },
+  },
   methods: {
     ...mapActions('tree-view', {
       addFolderAndArticle: 'addFolderAndArticle',
@@ -71,7 +77,12 @@ export default {
         let path = input.split('/')
         input = path.pop()
 
-        folder += path.reduce((acc,cur) => `${acc}=+${cur}`)
+        if (!path[0]) {
+          //if path begins with `/`, ignore relative pathing
+          folder = ''
+          path.shift()
+        }
+        folder += '=+' + path.reduce((acc,cur) => `${acc}=+${cur}`)
       }
 
       this.addFolderAndArticle({path: folder, name: input});

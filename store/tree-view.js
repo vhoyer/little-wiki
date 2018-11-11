@@ -28,7 +28,7 @@ export const actions = {
     return state[path]
   },
   //Sorry sometimes I can't help but to write shitty code, I find it funny
-  async addFolderAndArticle({commit, state}, {path, name}) {
+  async addFolderAndArticle({commit}, {path, name}) {
     const articleId = name ? firestore.collection('articles').add({body: '', path: path, title: name}).then(docRef => docRef.id) : null
 
     let tail = ''
