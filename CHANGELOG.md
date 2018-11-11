@@ -1,3 +1,7 @@
+# v1.2.0 [in progress]
+
+- Better design for tree-view explorer
+
 # v1.1.0
 
 - Better navigate through out the pages with navigational buttons

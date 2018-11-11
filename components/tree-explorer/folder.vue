@@ -1,11 +1,17 @@
 <template>
   <details>
     <summary
+      class="folder"
       @click="openFolder"
     >
       {{ folderName }}
+      <button
+        class="addNode"
+        @click="addNode"
+      >
+        + add node
+      </button>
     </summary>
-    <button @click="addNode">+ add node</button>
 
     <folder-content
       :articles="articles"
@@ -13,6 +19,35 @@
     />
   </details>
 </template>
+
+<style scoped>
+.folder {
+  line-height: 3em;
+    line-height: 3em;
+    display: flex;
+    align-items: center;
+}
+
+.addNode {
+  display: none;
+  margin-left: auto;
+  margin-right: 1em;
+  border-radius: 4px;
+  padding: 10px 30px;
+  border: 1px solid #35495e;
+  background-color: #fff;
+}
+
+.addNode:hover {
+  color: #fff;
+  background-color: #35495e;
+}
+
+details[open] > summary > .addNode {
+  display: block;
+}
+</style>
+
 
 <script>
 import { mapActions, mapState } from 'vuex'

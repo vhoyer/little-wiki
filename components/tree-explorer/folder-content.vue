@@ -12,6 +12,7 @@
     <li
       v-for="(article, key) in articles"
       :key="key"
+      class="article"
     >
       <nuxt-link
         :to="`/article/${key}`"
@@ -22,10 +23,14 @@
   </ul>
 </template>
 
-<style>
+<style scoped>
 .folder-content__folders {
   list-style: none;
   margin-left: -18px;
+}
+
+.article {
+  padding: 1em;
 }
 </style>
 
