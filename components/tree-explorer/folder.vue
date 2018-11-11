@@ -64,13 +64,14 @@ export default {
         })
     },
     addNode() {
-      let input = prompt("New file: (To create a folder append a '/' to the end)")
+      const promptText = "New file: (To create a folder append a '/' to the end)"
+      let input = prompt(promptText)
       let folder = this.path
 
       while (input.includes('=+')) {
         alert("Feeling smarty-pants, ye?\nYou cannot use '=+' because of reasons. Try again.")
 
-        input = prompt("New file: (To create a folder append a '/' to the end)", input)
+        input = prompt(promptText, input)
       }
 
       if (input.includes('/')) {
