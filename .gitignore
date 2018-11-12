@@ -83,3 +83,4 @@ dist
 #firebase
 firebase.config.json
 .firebase/
+.firebaserc
