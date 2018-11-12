@@ -10,6 +10,8 @@
 <style scoped>
 .tree-view {
   max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
 }
 </style>
 
