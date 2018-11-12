@@ -1,8 +1,10 @@
 <template>
-  <details>
+  <details
+    :open="opened"
+  >
     <summary
       class="folder"
-      @click="openFolder(path)"
+      @click="opened = !opened"
     >
       {{ folderName }}
       <button
@@ -63,6 +65,11 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      opened: false,
+    }
+  },
   computed: {
     ...mapState('tree-view', {
       tree: 'tree',
@@ -87,11 +94,18 @@ export default {
       }
     },
   },
+  mounted() {
+    this.toggleFolder()
+  },
   methods: {
     ...mapActions('tree-view', {
       addFolderAndArticle: 'addFolderAndArticle',
-      openFolder: 'getNode',
+      getNode: 'getNode',
     }),
+    toggleFolder() {
+      console.info(this.path, "loaded")
+      this.getNode(this.path)
+    },
     addNode() {
       const promptText = "New file: (To create a folder append a '/' to the end)"
       let input = prompt(promptText)
