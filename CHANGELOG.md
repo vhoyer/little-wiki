@@ -19,7 +19,7 @@
 - Better looks to existing buttons on the ui.
 
 
-# v1.0.0 - 🎟 Inital release!
+# v1.0.0 - 😌 Inital release!
 
 - You can create folders and articles!
 - You can edit the article!
