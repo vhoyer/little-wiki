@@ -1,5 +1,8 @@
 <template>
-  <ul class="folder-content">
+  <ul
+    v-if="isOpened"
+    class="folder-content"
+  >
     <li
       v-for="(folderPath, index) in folders"
       :key="index"
@@ -49,6 +52,10 @@ export default {
       type: Array,
       required: true,
     },
+    isOpened: {
+      type: Boolean,
+      required: true,
+    }
   },
   methods: {
     open(key) {

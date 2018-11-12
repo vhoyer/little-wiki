@@ -3,8 +3,8 @@
 - Better design for tree-view explorer.
 - Now the tree listen to changes made on the store and on firebase, that means that when
   you create a folder or an article it will update automatically.
-- Now it pre-loads the folder structure when you open the page, you don't need to wait
-  for it to load when you click a folder anymore, I hope.
+- Now it pre-loads the first level of the folder structure when you open the page so you don't
+  need to wait while it loads when you click a folder anymore, I hope.
 
 ## Bugfix
 - prevent console error if user cancel prompt in folder creation

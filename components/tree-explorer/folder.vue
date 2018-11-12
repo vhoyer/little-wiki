@@ -16,6 +16,7 @@
     </summary>
 
     <folder-content
+      :is-opened="opened"
       :articles="articles"
       :folders="folders"
     />
