@@ -9,7 +9,7 @@ You can base it on the `firebase.config.json.exemple` bundled within this repo, 
 to log into your [firebase console](https://console.firebase.google.com) and get the content of it there.
 
 You can find it in here:
-![image demonstrating where to get firebase.config.json content](docs/exemple.png x 300)
+![image demonstrating where to get firebase.config.json content](docs/exemple.png =3000x)
 
 
 ``` bash
