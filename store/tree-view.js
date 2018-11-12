@@ -3,6 +3,7 @@ const treeView = firestore.collection('tree-view')
 
 export const state = () => ({
   tree: {},
+  treeState: [],
 })
 
 export const mutations = {
@@ -11,6 +12,17 @@ export const mutations = {
       ...state.tree,
       ...value
     }
+  },
+  toggleNodeState(state, {path, setOpen}) {
+    if (!setOpen) {
+      state.treeState.splice(state.treeState.indexOf(path), 1)
+      return
+    }
+    if (state.treeState.includes(path)) {
+      return
+    }
+
+    state.treeState.push(path)
   },
 }
 

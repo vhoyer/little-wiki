@@ -53,7 +53,7 @@ details[open] > summary > .addNode {
 
 
 <script>
-import { mapActions, mapState } from 'vuex'
+import { mapActions, mapState, mapMutations } from 'vuex'
 import FolderContent from '~/components/tree-explorer/folder-content.vue'
 
 export default {
@@ -74,6 +74,7 @@ export default {
   computed: {
     ...mapState('tree-view', {
       tree: 'tree',
+      treeState: 'treeState',
     }),
     articles() {
       if (!this.tree[this.path]) return {}
@@ -95,17 +96,27 @@ export default {
       }
     },
   },
+  watch: {
+    opened() {
+      this.toggleFolder()
+    },
+  },
   mounted() {
-    this.toggleFolder()
+    this.getNode(this.path)
+    this.opened = this.treeState.includes(this.path)
   },
   methods: {
     ...mapActions('tree-view', {
       addFolderAndArticle: 'addFolderAndArticle',
       getNode: 'getNode',
     }),
+    ...mapMutations('tree-view', {
+      toggleNodeState: 'toggleNodeState',
+    }),
     toggleFolder() {
-      console.info(this.path, "loaded")
-      this.getNode(this.path)
+      const { path, opened: setOpen } = this
+
+      this.toggleNodeState({path, setOpen})
     },
     addNode() {
       const promptText = "New file: (To create a folder append a '/' to the end)"
