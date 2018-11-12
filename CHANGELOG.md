@@ -1,3 +1,8 @@
+# v1.3.1 [in progress]
+
+- limited width on tree explorer to better suit desktop
+
+
 # v1.2.1 - ⚡ - (A bit) Better UX!
 
 - Better design for tree-view explorer.
