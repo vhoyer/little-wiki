@@ -34,11 +34,11 @@ html {
 }
 
 .button {
-  display: inline-block;
   border-radius: 4px;
-  text-decoration: none;
-  padding: 10px 30px;
+  display: inline-block;
+  margin-bottom: 0;
   margin-left: 15px;
+  text-decoration: none;
 }
 
 .button--green {

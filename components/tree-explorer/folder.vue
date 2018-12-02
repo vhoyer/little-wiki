@@ -8,7 +8,7 @@
     >
       {{ folderName }}
       <button
-        class="addNode"
+        class="button button--gray add-node"
         @click="addNode"
       >
         + add node
@@ -25,28 +25,23 @@
 
 <style scoped>
 .folder {
+  align-items: center;
+  display: flex;
   line-height: 3em;
-    line-height: 3em;
-    display: flex;
-    align-items: center;
 }
 
-.addNode {
+.add-node {
   display: none;
   margin-left: auto;
-  margin-right: 1em;
-  border-radius: 4px;
-  padding: 10px 30px;
-  border: 1px solid #35495e;
   background-color: #fff;
 }
 
-.addNode:hover {
+.add-node:hover {
   color: #fff;
   background-color: #35495e;
 }
 
-details[open] > summary > .addNode {
+details[open] > summary > .add-node {
   display: block;
 }
 </style>

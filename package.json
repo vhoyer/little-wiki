@@ -18,7 +18,8 @@
     "cross-env": "^5.2.0",
     "firebase": "^5.5.8",
     "marked": "^0.5.1",
-    "nuxt": "^2.0.0"
+    "nuxt": "^2.0.0",
+    "skeleton-css": "^2.0.4"
   },
   "devDependencies": {
     "nodemon": "^1.11.0",

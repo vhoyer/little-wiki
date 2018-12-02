@@ -27,13 +27,19 @@
 </template>
 
 <style scoped>
+.folder-content {
+  margin-left: 0;
+}
+
 .folder-content__folders {
   list-style: none;
-  margin-left: -18px;
+  margin-left: 1em;
 }
 
 .article {
-  padding: 1em;
+  padding-bottom: .5em;
+  padding-left: 1em;
+  padding-top: .5em;
 }
 </style>
 
