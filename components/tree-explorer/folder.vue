@@ -27,7 +27,8 @@
 .folder {
   align-items: center;
   display: flex;
-  line-height: 3em;
+  line-height: 1.1em;
+  min-height: 3em;
 }
 
 .add-node {
