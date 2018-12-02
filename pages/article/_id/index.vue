@@ -17,7 +17,7 @@
     <article>
       <small>{{ path }}</small>
 
-      <h2>{{ title }}</h2>
+      <h1>{{ title }}</h1>
 
       <section v-html="marked"/>
     </article>
@@ -40,7 +40,7 @@ export default {
     const snap = doc.data()
     return {
       doc,
-      path: snap.path,
+      path: snap.path.split('=+').join('/'),
       title: snap.title,
       body: snap.body,
     }

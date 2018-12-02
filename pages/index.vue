@@ -20,6 +20,7 @@
 import TreeExplorer from '~/components/tree-explorer/folder.vue'
 
 export default {
+  layout: 'home',
   components: {
     TreeExplorer,
   },

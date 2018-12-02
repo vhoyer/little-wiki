@@ -1,13 +1,15 @@
 <template>
   <section class="container">
-    <header class="title">
-      little-wiki
-    </header>
-    <p class="subtitle">
-      A small wiki for you to host with firebase
-    </p>
-    <hr>
-    <nuxt/>
+    <div>
+      <h1 class="title">
+        little-wiki
+      </h1>
+      <h2 class="subtitle">
+        A small wiki for you to host with firebase
+      </h2>
+      <hr>
+      <nuxt/>
+    </div>
   </section>
 </template>
 
