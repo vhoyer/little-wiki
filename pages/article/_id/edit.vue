@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="edit">
     <nuxt-link
       :to="`/article/${doc.id}`"
       class="button button--grey"
@@ -33,14 +33,31 @@
         v-model="body"
         class="text-edit"
       />
+
+      <a
+        role="button"
+        class="button button--green button--left"
+        @click="save"
+      >
+        save
+      </a>
     </article>
   </div>
 </template>
 
 <style scoped>
+.edit {
+  margin-bottom: 1em;
+}
+
 .text-edit {
-  width: 100%;
-  height: 12em;
+  height: 80vh;
+  max-width: 100%;
+  min-width: 100%;
+}
+
+.button--left {
+  margin-left: auto;
 }
 </style>
 
@@ -62,7 +79,7 @@ export default {
     const snap = doc.data()
     return {
       doc,
-      path: snap.path,
+      path: snap.path.split('=+').join('/'),
       title: snap.title,
       body: snap.body,
     }
