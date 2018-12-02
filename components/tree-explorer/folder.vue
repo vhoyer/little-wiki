@@ -9,7 +9,7 @@
       {{ folderName }}
       <button
         class="button button--gray add-node"
-        @click="addNode"
+        @click.stop="addNode"
       >
         + add node
       </button>
